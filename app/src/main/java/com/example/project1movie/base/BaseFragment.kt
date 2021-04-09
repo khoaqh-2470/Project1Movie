@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment
 import java.lang.ref.WeakReference
 
 abstract class BaseFragment : Fragment() {
-    public val TAG = BaseFragment::class.java.simpleName
+
+    val TAG = BaseFragment::class.java.simpleName
 
     abstract fun getLayoutId(): Int
 
@@ -32,9 +33,9 @@ abstract class BaseFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mWeakReference = WeakReference<Activity>(activity)
         mAlertDialog = AlertDialog.Builder(getBaseActivity())
-            .setPositiveButton(
-                android.R.string.ok
-            ) { dialog, which -> dialog.cancel() }.create()
+                .setPositiveButton(
+                        android.R.string.ok
+                ) { dialog, which -> dialog.cancel() }.create()
         onCreate()
     }
 
@@ -45,9 +46,9 @@ abstract class BaseFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(getLayoutId(), container, false)
     }
@@ -85,9 +86,9 @@ abstract class BaseFragment : Fragment() {
 
     protected fun showAlertDialog(context: Context, msg: String) {
         AlertDialog.Builder(context)
-            .setMessage(msg)
-            .setPositiveButton(android.R.string.ok, null)
-            .show()
+                .setMessage(msg)
+                .setPositiveButton(android.R.string.ok, null)
+                .show()
     }
 
     protected fun showAlertDialog(context: Context, @StringRes resId: Int) {
